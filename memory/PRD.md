@@ -44,13 +44,18 @@ campaign-ready marketing operating system.
 - **/privacy** & **/terms** — proper UK GDPR-aware notices, dossier-style legal page shells
 
 ## Testing
-- iteration_1.json (v1): 98% — fixed mobile horizontal overflow
-- iteration_2.json (v2): **100% — no bugs, no design issues**
+- iteration_1.json (v1 dossier): 98% — fixed mobile horizontal overflow
+- iteration_2.json (v2 white/navy/cyan): **100% — no bugs, no design issues**
   - Splash flow verified (sessionStorage skip on reload)
   - 11 sections in correct order, all 8 mailto CTAs correct
   - Apply form submission verified — builds correct pre-filled mailto
   - /privacy and /terms render client-side with correct headings
   - No overflow at 390/768/1280px
+
+## Legal copy — confirmed by Peter (2026-01)
+- `/privacy` and `/terms` rewritten verbatim against Peter's amendments:
+  - Privacy: unincorporated UK business, 3-basis lawful processing (incl. legal obligation), 3-tier retention windows (12mo / project+24mo / 6yr tax), AI tooling transparency clause, no fake cookies/analytics
+  - Terms: Scan format confirmed at booking, Full Build 50/50 payment, anonymised-reference clause replaces auto-reference, "quoted separately" replaces day-rate language, new dedicated Refunds & Cancellations section, England & Wales jurisdiction
 
 ## Backlog / Future
 - **P2:** Real social proof tiles once 3+ case studies exist
@@ -60,5 +65,5 @@ campaign-ready marketing operating system.
 - **P4:** Split App.js (~1075 lines) into per-section components; add React Router v7 future flags to silence console warnings
 
 ## Next Action Items
-- Peter to confirm copy on /privacy and /terms before public launch
-- Watch first batch of mailto applications; revisit auto-reply backend if needed
+- Site is **launch-ready**. Hand off the preview URL to Peter, point him at /privacy and /terms one last time, then deploy.
+- Monitor first batch of mailto applications; revisit a real `/api/enquiries` + auto-reply backend if volume warrants.
