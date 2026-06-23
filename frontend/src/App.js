@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import QualifyForm from "./components/QualifyForm";
+import { Privacy, Terms } from "./pages/Legal";
 import {
   ArrowUpRight,
   ChevronDown,
@@ -131,6 +134,9 @@ const Nav = () => {
           >
             03 · Process
           </a>
+          <a href="#apply" className="hover:text-ink" data-testid="nav-link-apply">
+            04 · Apply
+          </a>
         </nav>
 
         <PrimaryCTA testId="nav-cta-button" className="!py-2.5 !px-4 !text-[11px]">
@@ -203,9 +209,14 @@ const Hero = () => {
               <PrimaryCTA testId="hero-primary-cta">
                 Request the Scan · £495
               </PrimaryCTA>
-              <SecondaryCTA testId="hero-secondary-cta">
-                Read the Brief
-              </SecondaryCTA>
+              <a
+                href="#apply"
+                data-testid="hero-secondary-cta"
+                className="group inline-flex items-center gap-3 bg-transparent text-ink px-7 py-4 font-mono text-[12px] md:text-[13px] uppercase tracking-widerx border border-ink hover:bg-ink hover:text-paper transition-colors duration-300"
+              >
+                <span>Apply in 3 minutes</span>
+                <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
             </div>
 
             <div className="reveal mt-10 flex items-center gap-2 text-ink/55 font-mono text-[11px] uppercase tracking-widerx">
@@ -1135,12 +1146,12 @@ const Footer = () => (
           © 2026 Signal Stack. All rights reserved.
         </div>
         <div className="flex gap-6 font-mono text-[11px] uppercase tracking-widerx text-ink/55">
-          <a href={MAILTO} className="hover:text-ink" data-testid="footer-privacy">
+          <Link to="/privacy" className="hover:text-ink" data-testid="footer-privacy">
             Privacy Policy
-          </a>
-          <a href={MAILTO} className="hover:text-ink" data-testid="footer-terms">
+          </Link>
+          <Link to="/terms" className="hover:text-ink" data-testid="footer-terms">
             Terms
-          </a>
+          </Link>
           <a href={MAILTO} className="hover:text-ink" data-testid="footer-contact">
             Contact
           </a>
@@ -1155,6 +1166,19 @@ const Footer = () => (
 /* ------------------------------------------------------------------ */
 
 export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="*" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+function Home() {
   useReveal();
   return (
     <div className="min-h-screen bg-paper text-ink page-frame" data-testid="app-root">
@@ -1168,6 +1192,7 @@ export default function App() {
         <WhoFor />
         <Process />
         <WhyDifferent />
+        <QualifyForm />
         <FinalCTA />
       </main>
       <Footer />

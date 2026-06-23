@@ -27,19 +27,16 @@ campaign-ready marketing operating system.
 - **Color tokens:** paper #F4F1ED, paperShade #EAE6DF, ink #1A1A1A, oxblood #7A2021, brass #B59A5A, olive #4B5320
 
 ## Implemented (2026-01)
-- Sticky dossier nav with file-number wordmark and primary "Secure Briefing" CTA
-- Hero: file metadata bar, big serif headline with oxblood italic accent, dossier "Case File · Index" card with CONFIDENTIAL stamp, scroll cue, ticker rail
-- Problem (01): six-cell grid of artefact types (voice notes, sales calls, old proposals, client emails, Notion/Slack, blank-page syndrome)
-- What It Does (02): dossier-style input → output table, 6 rows
-- Signal Stack Scan (03): full deliverables sheet (8 items), £495 price, turnaround/format/review/revisions metadata, Human-Reviewed stamp
-- Full Build (04): £1,500+ tier with 4 feature cards (content engine, calendar, sales asset pack, ops layer)
-- Who It Is For (05): two-column fit / not-fit list with `[ ✓ ]` / `[ × ]` typewriter markers
-- Process (06): 3-step methodology with vertical rule timeline (Extract → Synthesise → Deploy, day 1-10)
-- Why Different (07): 5-row strike-through "not / yes" comparison table
-- Final CTA (08): full-bleed oxblood section with reply-window aside, large "good thinking?" line, two CTAs, page-number bar
-- Footer: wordmark, contact, index links, © 2026, Privacy/Terms/Contact (all → mailto)
-- Mobile-safe: `overflow-x: hidden` on body, scroll wrappers around wide tables
-- Scroll-reveal animations, paper grain overlay, dotted-leader index lines, hard-edged buttons (no rounded corners)
+- Sticky dossier nav with file-number wordmark, anchor links (Scan / Build / Process / Apply) and primary "Secure Briefing" CTA
+- Hero with file metadata bar, big serif headline, "Apply in 3 minutes" secondary CTA that scrolls to the form
+- Problem (01), What It Does (02), Scan £495 (03), Full Build £1,500+ (04), Who It Is For (05), Process (06), Why Different (07)
+- **Apply / Qualifying Form** — 4-field intake (name, email, what you do, where the material lives). On submit it builds a pre-filled `mailto:peter@signalstack.co.uk` with the answers in the body and opens the user's email app. Zero backend, zero spam risk.
+- Final CTA section (oxblood full-bleed)
+- Footer with proper SPA routing to dedicated Privacy and Terms pages
+- **/privacy** — proper UK GDPR-aware privacy notice in dossier style (8 sections)
+- **/terms** — UK service terms covering Scan + Full Build, fees, IP, liability (10 sections)
+- Mobile-safe (overflow-x hidden + scroll wrappers around wide tables)
+- Scroll-reveal animations, paper grain overlay, dotted-leader index lines
 
 ## What's Tested
 - 11 mailto CTAs verified: each points to `mailto:peter@signalstack.co.uk?subject=Signal%20Stack%20Scan%20Enquiry`
@@ -51,12 +48,11 @@ campaign-ready marketing operating system.
 - No fake testimonials, no logo cloud, no robots, no neon, no console errors
 
 ## Backlog / Future
-- **P1:** Replace mailto Privacy Policy / Terms with proper static pages once content is approved
 - **P2:** Add real social proof (case study tiles + client quotes) when first 3 case studies land
-- **P2:** Add a lightweight "Apply for a Scan" form with email + 3 qualifying questions (would lift conversion vs. cold mailto)
+- **P2:** Add a server-side enquiry endpoint (Mongo persist + auto-reply via Resend/SendGrid) if mailto-only conversion proves insufficient
 - **P3:** Add OG image + structured data (Service schema with £495 price)
 - **P3:** Add a downloadable sample dossier PDF behind email gate
 
 ## Next Action Items
-- Confirm with Peter whether the footer Privacy/Terms should remain mailto (current spec) or move to dedicated pages
-- Decide if a qualifying form is desired before launch (vs. pure mailto)
+- Peter to review Privacy + Terms copy and confirm or amend before launch
+- Monitor first batch of mailto applications to validate conversion vs. cold-email baseline
