@@ -1,0 +1,290 @@
+{
+  "theme_and_archetype": {
+    "domain": "AI Marketing Operations Service",
+    "theme": "light",
+    "archetype": "Archetype 4 (Swiss & High-Contrast) + Editorial/Luxury hybrid",
+    "vibe": "Intelligence brief, classified dossier, campaign file, typewriter accents, physical paper forms, confident and practical.",
+    "rules": {
+      "do": [
+        "Use hard 1px borders",
+        "Use monospace tags for metadata",
+        "Use high-contrast typographic hierarchy",
+        "Make it look like a printed document",
+        "Use .js/jsx files, not .ts/tsx"
+      ],
+      "dont": [
+        "No purple/violet gradients",
+        "No neon",
+        "No generic AI startup look",
+        "No robots",
+        "No fake dashboards",
+        "No pill-shaped buttons",
+        "No fake testimonials or logo bars"
+      ]
+    }
+  },
+  "typography": {
+    "fonts": {
+      "heading": "IBM Plex Serif",
+      "body": "IBM Plex Sans",
+      "accent": "IBM Plex Mono"
+    },
+    "scale": {
+      "h1": "text-5xl md:text-7xl tracking-tighter leading-[1.1] font-medium",
+      "h2": "text-3xl md:text-4xl tracking-tight leading-snug font-medium",
+      "h3": "text-xl md:text-2xl tracking-tight leading-snug font-medium",
+      "body": "text-base md:text-lg leading-relaxed text-[#1A1A1A]/80",
+      "mono_label": "text-xs md:text-sm uppercase tracking-widest font-medium"
+    }
+  },
+  "colors": {
+    "background": {
+      "primary": "#F4F1ED",
+      "secondary": "#EAE6DF",
+      "paper_texture": "url('https://images.unsplash.com/photo-1603484477859-abe6a73f9366?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2Mzl8MHwxfHNlYXJjaHwzfHx2aW50YWdlJTIwcGFwZXIlMjB0ZXh0dXJlfGVufDB8fHx8MTc4MjI0NjUyOXww&ixlib=rb-4.1.0&q=85')"
+    },
+    "text": {
+      "primary": "#1A1A1A",
+      "secondary": "#4A4A4A",
+      "muted": "#737373"
+    },
+    "accents": {
+      "oxblood": "#7A2021",
+      "brass": "#B59A5A",
+      "olive": "#4B5320"
+    },
+    "borders": {
+      "default": "rgba(26, 26, 26, 0.15)",
+      "strong": "rgba(26, 26, 26, 0.4)"
+    }
+  },
+  "layout_and_spacing": {
+    "grid_system": "Form/Bento hybrid. Use CSS grid with border-collapse effects. Sections separated by strong horizontal ruled lines (1px solid border-[#1A1A1A]/20).",
+    "container": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+    "spacing_scale": {
+      "section_padding": "py-24 md:py-32",
+      "element_gap": "gap-8 md:gap-12",
+      "card_padding": "p-8 md:p-12"
+    },
+    "corners": "rounded-none",
+    "shadows": "None. Rely on 1px borders and high contrast. Background elements can have hard-edged offset blocks (e.g., 4px translate-x, 4px translate-y)."
+  },
+  "components": {
+    "button": {
+      "primary": "rounded-none bg-[#7A2021] text-white px-8 py-4 font-mono text-sm tracking-widest uppercase hover:bg-[#1A1A1A] transition-colors duration-200 border border-transparent",
+      "secondary": "rounded-none bg-transparent text-[#1A1A1A] px-8 py-4 font-mono text-sm tracking-widest uppercase border border-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white transition-colors duration-200"
+    },
+    "dossier_card": {
+      "wrapper": "border border-[#1A1A1A]/20 bg-white/50 backdrop-blur-sm relative p-8 md:p-12",
+      "tab": "absolute -top-3 left-8 bg-[#F4F1ED] px-2 text-xs font-mono text-[#1A1A1A]/60 uppercase tracking-widest"
+    },
+    "stamps": {
+      "confidential": "text-[#7A2021] border-2 border-[#7A2021] px-3 py-1 font-mono text-xl md:text-2xl uppercase tracking-widest rotate-[-5deg] inline-block opacity-80 mix-blend-multiply"
+    }
+  },
+  "media": {
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1603484477859-abe6a73f9366?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2Mzl8MHwxfHNlYXJjaHwzfHx2aW50YWdlJTIwcGFwZXIlMjB0ZXh0dXJlfGVufDB8fHx8MTc4MjI0NjUyOXww&ixlib=rb-4.1.0&q=85",
+        "description": "Crumpled beige parchment paper texture",
+        "category": "background_texture",
+        "instructions": "Use as a fixed background overlay with low opacity (10-15%) and mix-blend-multiply to give the entire page a physical paper feel."
+      },
+      {
+        "url": "https://images.pexels.com/photos/9904469/pexels-photo-9904469.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Detailed macro shot of vintage typewriter typebars",
+        "category": "hero_accent_image",
+        "instructions": "Use sparingly as a heavily desaturated, high-contrast black-and-white asset in the hero or 'Problem' section to reinforce the extraction/dossier theme."
+      }
+    ]
+  },
+  "blueprint": {
+    "nav": {
+      "logo": "Signal Stack",
+      "tagline": "AI Marketing Ops",
+      "full_descriptor": "Signal Stack AI Marketing Ops for sharper positioning, faster campaigns and clearer client action plans.",
+      "cta": {
+        "text": "SECURE BRIEFING",
+        "href": "mailto:peter@signalstack.co.uk?subject=Signal Stack Scan Enquiry",
+        "data_testid": "nav-cta-button"
+      }
+    },
+    "sections": [
+      {
+        "id": "hero",
+        "layout": "Asymmetric split. Left side: Massive typography, rigid alignment. Right side: Typewriter macro image or empty grid space with dossier metadata.",
+        "content": {
+          "label": "[ FILE_NO: SS-001 // STATUS: ACTIVE ]",
+          "headline": "Turn scattered business knowledge into campaign-ready action.",
+          "subhead": "We help consultants, agencies, and founders extract what is in their head—notes, calls, and customer language—and build a relentless marketing operating system.",
+          "cta_primary": {
+            "text": "REQUEST SIGNAL STACK SCAN (£495)",
+            "href": "mailto:peter@signalstack.co.uk?subject=Signal Stack Scan Enquiry",
+            "data_testid": "hero-primary-cta"
+          }
+        }
+      },
+      {
+        "id": "problem",
+        "layout": "Grid-based. 3 columns mimicking a classification form. Ruled lines separating items.",
+        "content": {
+          "label": "01 // THE CHAOS",
+          "headline": "The Intelligence Trap",
+          "body": "You have the expertise, but it is scattered. It lives in Notion docs, recorded Zoom calls, half-finished proposals, and unread Slack threads.",
+          "points": [
+            "Your knowledge is inaccessible for scale.",
+            "You don't need another generic AI tool.",
+            "You need an extraction process."
+          ]
+        }
+      },
+      {
+        "id": "what_it_does",
+        "layout": "Bento form. Hard borders. Arrows and monospace fonts connecting input to output.",
+        "content": {
+          "label": "02 // THE EXTRACTION",
+          "headline": "Raw Input to Campaign OS",
+          "items": [
+            {
+              "input": "Messy Voice Notes",
+              "output": "Clear Narrative Pillars"
+            },
+            {
+              "input": "Client Call Transcripts",
+              "output": "High-Converting Content"
+            },
+            {
+              "input": "Scattered Objections",
+              "output": "Sales Enablement Assets"
+            }
+          ]
+        }
+      },
+      {
+        "id": "signal_stack_scan",
+        "layout": "Focus section. Slight background color shift to #EAE6DF. Bordered 'Document' style card.",
+        "content": {
+          "label": "03 // ENTRY PROTOCOL",
+          "headline": "Signal Stack Scan",
+          "price": "From £495",
+          "description": "A comprehensive audit and extraction of your existing materials into a foundational strategy.",
+          "deliverables": [
+            "Audience architecture & positioning",
+            "Core messaging pillars",
+            "90-day campaign blueprint",
+            "Offer clarity matrix"
+          ],
+          "cta": {
+            "text": "INITIATE SCAN",
+            "href": "mailto:peter@signalstack.co.uk?subject=Signal Stack Scan Enquiry",
+            "data_testid": "scan-cta-button"
+          }
+        }
+      },
+      {
+        "id": "full_build",
+        "layout": "Dossier addendum format. Secondary visual weight compared to the Scan.",
+        "content": {
+          "label": "04 // ADVANCED DEPLOYMENT",
+          "headline": "Full Marketing Ops Build",
+          "price": "From £1,500+",
+          "description": "For businesses ready to automate and scale their marketing operations based on the Scan intelligence.",
+          "features": [
+            "End-to-end campaign automation",
+            "Custom AI training on your IP",
+            "Execution pipelines & workflows"
+          ],
+          "cta": {
+            "text": "REQUEST FULL BUILD DETAILS",
+            "href": "mailto:peter@signalstack.co.uk?subject=Signal Stack Scan Enquiry",
+            "data_testid": "full-build-cta-button"
+          }
+        }
+      },
+      {
+        "id": "who_it_is_for",
+        "layout": "2-column list. Typewriter aesthetics with checkbox-style markers `[x]`.",
+        "content": {
+          "label": "05 // TARGET PROFILES",
+          "headline": "Who is this for?",
+          "profiles": [
+            "Consultants seeking scale",
+            "Specialized agencies",
+            "B2B service founders",
+            "High-ticket service businesses"
+          ]
+        }
+      },
+      {
+        "id": "process",
+        "layout": "Linear timeline flowing down the page via a thick vertical line (1px charcoal).",
+        "content": {
+          "label": "06 // METHODOLOGY",
+          "headline": "The 3-Step Process",
+          "steps": [
+            {
+              "number": "01",
+              "title": "Extraction",
+              "description": "Send us your mess. Docs, calls, notes—all of it."
+            },
+            {
+              "number": "02",
+              "title": "Synthesis",
+              "description": "Human + AI structuring. We find the signal in the noise."
+            },
+            {
+              "number": "03",
+              "title": "Deployment",
+              "description": "Receive campaign-ready assets and operating systems."
+            }
+          ]
+        }
+      },
+      {
+        "id": "why_different",
+        "layout": "Minimalist text block. High contrast. Large typography.",
+        "content": {
+          "label": "07 // ADVANTAGE",
+          "headline": "No Hype. Just Output.",
+          "body": "Human-reviewed. Built from your actual business material. Not a generic SaaS—a done-with-you service. Credibility through process, not invented social proof."
+        }
+      },
+      {
+        "id": "final_cta",
+        "layout": "Massive block. Inverted colors (oxblood background, white text) for final impact.",
+        "content": {
+          "label": "08 // ACTION",
+          "headline": "Ready to standardize your marketing ops?",
+          "cta": {
+            "text": "CONTACT PETER",
+            "href": "mailto:peter@signalstack.co.uk?subject=Signal Stack Scan Enquiry",
+            "data_testid": "final-cta-button"
+          }
+        }
+      }
+    ],
+    "footer": {
+      "content": "Signal Stack — AI marketing ops for sharper positioning, faster campaigns and clearer client action plans.",
+      "contact": "peter@signalstack.co.uk",
+      "location": "United Kingdom",
+      "copyright": "© 2026 Signal Stack. All rights reserved.",
+      "links": [
+        "Privacy Policy",
+        "Terms",
+        "Contact"
+      ]
+    }
+  },
+  "instructions_to_main_agent": [
+    "Strictly adhere to the fonts: IBM Plex Serif (Headings), IBM Plex Sans (Body), IBM Plex Mono (Accents, labels, buttons).",
+    "Implement the 'dossier' visual aesthetic using 1px borders (border-[#1A1A1A]/20) heavily to separate sections, create grids, and box content.",
+    "Do not use border-radius anywhere (rounded-none).",
+    "Use the paper texture image provided in the media section as a fixed background overlay with opacity-10 and mix-blend-multiply to give physical texture.",
+    "Do not add any soft shadows (box-shadow). Use hard borders instead.",
+    "Ensure all buttons use mailto links exactly as provided.",
+    "Use uppercase monospace tags (e.g., [CLASSIFIED], 01 // THE CHAOS) as overlines for sections.",
+    "Implement the typewriter/dossier vibe without it feeling gimmicky; keep padding generous and typography extremely crisp.",
+    "Build the application using React (.js/.jsx extensions) and TailwindCSS. Do not use TypeScript.",
+    "Include 'data-testid' attributes on all interactive elements as mapped in the blueprint."
+  ]
+}
