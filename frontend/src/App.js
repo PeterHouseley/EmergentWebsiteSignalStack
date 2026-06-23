@@ -294,8 +294,8 @@ const Hero = () => {
       </div>
 
       {/* Ticker */}
-      <div className="border-t border-ink/15 bg-paperShade/60">
-        <div className="overflow-hidden">
+      <div className="border-t border-ink/15 bg-paperShade/60 overflow-hidden">
+        <div className="overflow-hidden w-full">
           <div className="ticker-track flex gap-12 py-3 font-mono text-[11px] uppercase tracking-widerx text-ink/70 whitespace-nowrap">
             {Array.from({ length: 2 }).map((_, k) => (
               <div key={k} className="flex gap-12">
@@ -461,8 +461,8 @@ const WhatItDoes = () => {
         </div>
 
         <div className="mt-14 reveal">
-          <div className="border border-ink/25">
-            <div className="grid grid-cols-12 bg-ink text-paper font-mono text-[10px] md:text-[11px] uppercase tracking-widerx">
+          <div className="border border-ink/25 overflow-x-auto">
+            <div className="grid grid-cols-12 bg-ink text-paper font-mono text-[10px] md:text-[11px] uppercase tracking-widerx min-w-[640px]">
               <div className="col-span-1 px-4 py-3 border-r border-paper/20">
                 #
               </div>
@@ -480,7 +480,7 @@ const WhatItDoes = () => {
             {rows.map((r, i) => (
               <div
                 key={i}
-                className="grid grid-cols-12 border-t border-ink/15 hover:bg-paper transition-colors"
+                className="grid grid-cols-12 border-t border-ink/15 hover:bg-paper transition-colors min-w-[640px]"
               >
                 <div className="col-span-1 px-4 py-5 font-mono text-xs text-ink/55 border-r border-ink/15 flex items-center">
                   {String(i + 1).padStart(2, "0")}
