@@ -7,12 +7,13 @@ import React from "react";
 export const SignalMark = ({ size = 40, animated = false, className = "" }) => {
   const blocks = [
     // x, y, animation delay (ms) — order: col1 → col2 → col3 ascending
-    { x: 0, y: 42, d: 0 },
-    { x: 18, y: 42, d: 90 },
-    { x: 18, y: 24, d: 180 },
-    { x: 36, y: 42, d: 270 },
-    { x: 36, y: 24, d: 360 },
-    { x: 36, y: 6, d: 460 },
+    // longer stagger so each bar is clearly readable
+    { x: 0, y: 42, d: 80 },
+    { x: 18, y: 42, d: 320 },
+    { x: 18, y: 24, d: 560 },
+    { x: 36, y: 42, d: 800 },
+    { x: 36, y: 24, d: 1040 },
+    { x: 36, y: 6, d: 1280 },
   ];
   return (
     <svg

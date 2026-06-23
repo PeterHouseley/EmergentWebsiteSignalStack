@@ -1021,27 +1021,13 @@ const Footer = () => (
 /* ----------------------- App ----------------------- */
 
 function Home() {
-  const [splashDone, setSplashDone] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return sessionStorage.getItem("ss_splash_done") === "1";
-  });
+  const [splashDone, setSplashDone] = useState(false);
 
   useReveal();
 
-  useEffect(() => {
-    if (splashDone) sessionStorage.setItem("ss_splash_done", "1");
-  }, [splashDone]);
-
   return (
     <div className="min-h-screen bg-white text-navy" data-testid="app-root">
-      {!splashDone && (
-        <Splash
-          onDone={() => {
-            sessionStorage.setItem("ss_splash_done", "1");
-            setSplashDone(true);
-          }}
-        />
-      )}
+      {!splashDone && <Splash onDone={() => setSplashDone(true)} />}
       <Nav />
       <main>
         <Hero />
