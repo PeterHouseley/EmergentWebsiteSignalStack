@@ -9,50 +9,56 @@ campaign-ready marketing operating system.
 - **Main offer:** Signal Stack Scan, from £495
 - **Secondary offer:** full marketing ops build, from £1,500+
 - **Email CTA:** peter@signalstack.co.uk (subject: "Signal Stack Scan Enquiry")
-- **Style:** premium editorial intelligence dossier / classified brief
 - **Sections:** hero, problem, what it does, Scan, full build, who it's for, 3-step process, why different, final CTA, footer
 
-## User Choices (locked in)
-- Aesthetic: Intelligence brief / classified dossier (typewriter accents, file tabs, stamps)
-- Hero headline: "Turn scattered business knowledge into campaign-ready action."
-- No fake testimonials / no logo cloud / no "trusted by" — credibility through process only
-- Wordmark: "Signal Stack" with tagline "AI Marketing Ops"
-- Footer: company name + email + United Kingdom + © 2026 + Privacy/Terms/Contact links
+## Visual Direction (current — v2)
+- **Aesthetic:** premium B2B, white-and-blue, drawn from the brand logo
+- **Brand colors:** Cyan `#00A7E1` (accent), Deep navy `#10273B` (text + dark sections), white `#FFFFFF`, bone `#F6F8FB` (section bg), line `#E4EAF0` (hairlines), mute `#5B6B7B` (secondary text)
+- **Typography:** Instrument Serif (display italic accents only), Geist (body & headings), JetBrains Mono (uppercase labels)
+- **Splash:** fullscreen white-and-cyan loader on first visit; 6 cyan bars rise into place (staggered), wordmark slides in, tagline + sweep bar fade in, then overlay fades. Suppressed for the rest of the session via `sessionStorage.ss_splash_done`.
 
 ## Architecture
-- **Frontend:** React 18 (CRA) + Tailwind CSS 3 + lucide-react
-- **Backend:** FastAPI minimal (health endpoint only; site is static-content one-pager)
+- **Frontend:** React 18 (CRA) + React Router v6 + Tailwind CSS 3 + lucide-react
+- **Backend:** FastAPI minimal (health endpoint only)
 - **Storage:** none required — pure marketing page with mailto CTAs
-- **Typography:** IBM Plex Serif (headings), IBM Plex Sans (body), IBM Plex Mono (labels, buttons)
-- **Color tokens:** paper #F4F1ED, paperShade #EAE6DF, ink #1A1A1A, oxblood #7A2021, brass #B59A5A, olive #4B5320
+- **Routes:** `/` (home), `/privacy`, `/terms` — client-side SPA navigation
 
 ## Implemented (2026-01)
-- Sticky dossier nav with file-number wordmark, anchor links (Scan / Build / Process / Apply) and primary "Secure Briefing" CTA
-- Hero with file metadata bar, big serif headline, "Apply in 3 minutes" secondary CTA that scrolls to the form
-- Problem (01), What It Does (02), Scan £495 (03), Full Build £1,500+ (04), Who It Is For (05), Process (06), Why Different (07)
-- **Apply / Qualifying Form** — 4-field intake (name, email, what you do, where the material lives). On submit it builds a pre-filled `mailto:peter@signalstack.co.uk` with the answers in the body and opens the user's email app. Zero backend, zero spam risk.
-- Final CTA section (oxblood full-bleed)
-- Footer with proper SPA routing to dedicated Privacy and Terms pages
-- **/privacy** — proper UK GDPR-aware privacy notice in dossier style (8 sections)
-- **/terms** — UK service terms covering Scan + Full Build, fees, IP, liability (10 sections)
-- Mobile-safe (overflow-x hidden + scroll wrappers around wide tables)
-- Scroll-reveal animations, paper grain overlay, dotted-leader index lines
+### v1 — dossier aesthetic (replaced)
+- Initial premium dossier/classified-brief one-pager
 
-## What's Tested
-- 11 mailto CTAs verified: each points to `mailto:peter@signalstack.co.uk?subject=Signal%20Stack%20Scan%20Enquiry`
-- 10 required sections present in correct DOM order (via data-testid)
-- £495 Scan section: price + 8 deliverables confirmed
-- £1,500+ Full Build: price + 4 feature cards confirmed
-- Anchor nav (Scan / Build / Process) scrolls correctly
-- Final CTA contrast (oxblood bg + paper text) verified
-- No fake testimonials, no logo cloud, no robots, no neon, no console errors
+### v2 — current
+- **Splash loader** with animated SVG mark (6 cyan bars), wordmark, tagline + sweep bar; auto-dismisses in ~2.4s; once-per-session via sessionStorage
+- **Cover hero** with massive Geist headline + Instrument-Serif italic cyan accent on "campaign-ready", chip "Briefing Open · 24h reply", trust row with three checkpoints, sample "Positioning statement" preview card
+- Sticky transparent-to-blurred nav with brand mark, anchor links, primary "Book the Scan" CTA
+- **01 Problem** — 6-card grid in white/cyan-soft icon tiles
+- **02 What it does** — input → output table on bone background with navy header row
+- **03 Scan £495** — large display price ("From" above), 8 deliverables with cyan check chips, glow-ring on hover
+- **04 Full Build £1,500+** — full-bleed navy section with cyan accents and 4 feature cards
+- **05 Who it's for** — fit / not-fit two-column dossier-style cards
+- **06 Process** — 3-step horizontal grid with serif step-numbers and italic sub-titles
+- **07 Why different** — strike-through "not / yes" comparison table
+- **Apply form** — 4 fields, builds pre-filled `mailto:` on submit, dossier-style form card with glow ring
+- **Final CTA** — navy full-bleed with cyan radial wash, big italic question headline, primary white CTA + ghost CTA, reply-window aside
+- **Footer** — wordmark, contact, index links, Privacy/Terms as SPA routes
+- **/privacy** & **/terms** — proper UK GDPR-aware notices, dossier-style legal page shells
+
+## Testing
+- iteration_1.json (v1): 98% — fixed mobile horizontal overflow
+- iteration_2.json (v2): **100% — no bugs, no design issues**
+  - Splash flow verified (sessionStorage skip on reload)
+  - 11 sections in correct order, all 8 mailto CTAs correct
+  - Apply form submission verified — builds correct pre-filled mailto
+  - /privacy and /terms render client-side with correct headings
+  - No overflow at 390/768/1280px
 
 ## Backlog / Future
-- **P2:** Add real social proof (case study tiles + client quotes) when first 3 case studies land
-- **P2:** Add a server-side enquiry endpoint (Mongo persist + auto-reply via Resend/SendGrid) if mailto-only conversion proves insufficient
-- **P3:** Add OG image + structured data (Service schema with £495 price)
-- **P3:** Add a downloadable sample dossier PDF behind email gate
+- **P2:** Real social proof tiles once 3+ case studies exist
+- **P2:** Graduate to `/api/enquiries` endpoint (MongoDB + Resend auto-reply) if mailto-only proves insufficient
+- **P3:** OG image + Service schema for SEO
+- **P3:** Downloadable sample dossier PDF behind email gate
+- **P4:** Split App.js (~1075 lines) into per-section components; add React Router v7 future flags to silence console warnings
 
 ## Next Action Items
-- Peter to review Privacy + Terms copy and confirm or amend before launch
-- Monitor first batch of mailto applications to validate conversion vs. cold-email baseline
+- Peter to confirm copy on /privacy and /terms before public launch
+- Watch first batch of mailto applications; revisit auto-reply backend if needed
