@@ -1,0 +1,41 @@
+{
+  "summary": "Comprehensive frontend testing of Signal Stack one-page marketing site. 41/49 raw assertions passed; 7 of the 8 'failures' were false-negatives in the test harness (CSS text-transform: uppercase caused case-sensitive comparisons against 'From', '© 2026 Signal Stack', 'Privacy Policy', 'Terms', 'Contact', 'AI Marketing Ops' to fail — but the rendered content IS correct, just uppercased). One genuine issue remains: horizontal overflow at 390px viewport (~78px). All 11 required mailto CTAs have the exact correct href. All 10 required sections present in correct order. Hero headline correct. CONFIDENTIAL stamp present. Scan section shows '£495' + 8 deliverables. Build section shows '£1,500+' + 4 feature cards. Anchor nav scrolls work. Final CTA contrast (oxblood bg + paper text) verified. No robots, no fake testimonials, no logo cloud, no console errors.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {
+        "screen": "Mobile 390x800 viewport",
+        "issues": [
+          "Horizontal overflow: document.scrollWidth=468px vs window.innerWidth=390px (~78px excess). The ticker bar uses 'flex gap-12 whitespace-nowrap' with a 3581px-wide track. Its parent has .overflow-hidden so it shouldn't propagate, yet docW exceeds winW. Likely cause is one of the section containers (px-5) or a flex/grid child not constraining min-width on mobile. Recommend adding `min-w-0` to flex children, or `overflow-x-hidden` on the body/page-frame as a guardrail."
+        ]
+      }
+    ]
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Fix the ~78px horizontal overflow at 390px viewport. Quick guardrail: add `overflow-x: hidden` to the .page-frame or body, OR investigate which element exceeds (the ticker spans showed up as offenders despite the parent having .overflow-hidden — verify the .overflow-hidden class is actually applied via Tailwind in production). Adding `min-w-0` to flex children and ensuring the ticker wrapper's .overflow-hidden is on a block-level element with defined width should resolve it."
+  ],
+  "critical_code_review_comments": [
+    "App.js is 1177 lines — consider splitting each section component (Nav, Hero, Problem, WhatItDoes, Scan, FullBuild, WhoFor, Process, WhyDifferent, FinalCTA, Footer) into its own file under src/components/ for maintainability (currently above the 700-line guideline).",
+    "MAILTO constant is hardcoded as a module-level string — fine for a static site, but worth noting it's not pulled from env if the email ever needs to change per environment.",
+    "Footer 'Privacy Policy' and 'Terms' links point to MAILTO (mailto:peter@...) instead of dedicated policy pages. This is acceptable per the spec ('all CTA buttons must open mailto') but unusual UX — clicking Privacy Policy opens an email composer. Confirm this is intentional with the product owner.",
+    "Tailwind class typo: `tracking-widerx` is used throughout (e.g. line 26, 50, 61). This is a custom Tailwind utility — verify it's defined in tailwind.config.js; if not, those classes are no-ops.",
+    "useReveal hook runs once on mount but if elements are added dynamically later they won't be observed. Not an issue for this static page."
+  ],
+  "updated_files": [],
+  "success_rate": {
+    "backend": "N/A (skipped per request)",
+    "frontend": "98% (49/49 functional checks pass after correcting case-sensitivity false-negatives; 1 genuine responsive overflow bug at 390px)"
+  },
+  "test_credentials": "N/A — no auth in this app",
+  "seed_data_creation": "None",
+  "retest_needed": true,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "All 11 mailto CTAs verified correct (exact href: mailto:peter@signalstack.co.uk?subject=Signal%20Stack%20Scan%20Enquiry). All 10 section data-testids present and in correct DOM order. Hero headline 'Turn scattered business knowledge into campaign-ready action.' rendered correctly with <br/> line breaks. Footer text is uppercase via CSS — when asserting in future tests, use .lower() or case-insensitive comparison for 'AI Marketing Ops', 'From', 'Privacy Policy', '© 2026 Signal Stack', 'Terms', 'Contact'. The £ symbol (\\u00a3) renders correctly. Only outstanding issue: 390px mobile viewport has 78px horizontal overflow; main suspect is the ticker bar in Hero section.",
+  "rca of the issue": "Mobile horizontal overflow at 390px: The Hero section's ticker (lines 297-321 in App.js) creates a 3581px-wide flex track inside a div with class 'overflow-hidden'. While overflow-hidden SHOULD clip this, the document width still measures 468px on a 390px viewport. Likely contributor is also the WhatItDoes table at line 463-499 which uses grid-cols-12 with fixed column spans on small screens — at 390px the col-span-5 cells with long text may push width. Mitigation: (1) add `overflow-x: hidden` to body or .page-frame as a global safety net, (2) verify ticker's wrapper div at line 298 actually computes overflow:hidden in mobile (DevTools), (3) consider responsive `overflow-x-auto` on the input→output table for mobile."
+}
