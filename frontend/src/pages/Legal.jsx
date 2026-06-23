@@ -1,29 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import { Wordmark } from "../components/Logo";
 
 const PageShell = ({ kicker, title, children, testId }) => (
-  <div
-    className="min-h-screen bg-paper text-ink page-frame"
-    data-testid={testId}
-  >
-    <header className="border-b border-ink/15">
-      <div className="max-w-4xl mx-auto px-5 md:px-10 h-14 md:h-16 flex items-center justify-between">
-        <Link
-          to="/"
-          className="flex items-baseline gap-3"
-          data-testid="legal-back-home"
-        >
-          <span className="font-serif text-xl md:text-2xl font-medium tracking-tight">
-            Signal<span className="text-oxblood">.</span>Stack
-          </span>
-          <span className="hidden md:inline font-mono text-[10px] uppercase tracking-widerx text-ink/60">
-            AI Marketing Ops
-          </span>
+  <div className="min-h-screen bg-white text-navy" data-testid={testId}>
+    <header className="border-b border-line bg-white">
+      <div className="max-w-4xl mx-auto px-5 md:px-10 h-16 md:h-20 flex items-center justify-between">
+        <Link to="/" data-testid="legal-back-home">
+          <Wordmark size="md" showTag={false} />
         </Link>
         <Link
           to="/"
-          className="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-widerx text-ink/70 hover:text-ink"
+          className="group inline-flex items-center gap-2 font-sans text-[13px] text-mute hover:text-navy"
         >
           <ArrowLeft className="w-3.5 h-3.5 transition-transform duration-300 group-hover:-translate-x-0.5" />
           <span>Back to brief</span>
@@ -32,36 +21,45 @@ const PageShell = ({ kicker, title, children, testId }) => (
     </header>
 
     <main className="max-w-4xl mx-auto px-5 md:px-10 py-14 md:py-24">
-      <div className="pb-8 border-b border-ink/15 flex items-center justify-between">
-        <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-widerx text-ink/55">
+      <div className="pb-7 border-b border-line flex items-center justify-between">
+        <span className="font-mono uppercase tracking-widerx text-[11px] text-cyan-deep">
           {kicker}
         </span>
-        <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-widerx text-ink/55">
+        <span className="font-mono uppercase tracking-widerx text-[11px] text-mute">
           Effective · 01 Jan 2026
         </span>
       </div>
-      <h1 className="mt-10 font-serif font-medium tracking-tight text-4xl md:text-6xl leading-[1.05]">
+      <h1 className="mt-10 font-sans font-semibold tracking-[-0.02em] text-5xl md:text-6xl leading-[1.04]">
         {title}
       </h1>
-      <div className="mt-10 space-y-8 text-ink/80 text-base md:text-[17px] leading-relaxed">
+      <div className="mt-10 space-y-8 text-navy/85 text-base md:text-[17px] leading-relaxed">
         {children}
       </div>
 
-      <div className="mt-16 pt-6 border-t border-ink/15 font-mono text-[11px] uppercase tracking-widerx text-ink/55 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+      <div className="mt-16 pt-6 border-t border-line font-mono uppercase tracking-widerx text-[11px] text-mute flex flex-col md:flex-row md:items-center md:justify-between gap-3">
         <span>Signal Stack · United Kingdom</span>
-        <span>peter@signalstack.co.uk</span>
+        <span className="text-cyan-deep">peter@signalstack.co.uk</span>
       </div>
     </main>
   </div>
 );
 
 const H2 = ({ children }) => (
-  <h2 className="font-serif text-2xl md:text-3xl text-ink leading-snug mt-10">
+  <h2 className="font-sans font-semibold tracking-tight text-navy text-2xl md:text-3xl mt-10">
     {children}
   </h2>
 );
 
 const P = ({ children }) => <p className="leading-relaxed">{children}</p>;
+
+const Mail = () => (
+  <a
+    className="u-link text-cyan-deep"
+    href="mailto:peter@signalstack.co.uk"
+  >
+    peter@signalstack.co.uk
+  </a>
+);
 
 export const Privacy = () => (
   <PageShell
@@ -79,7 +77,7 @@ export const Privacy = () => (
     <H2>1. Who we are</H2>
     <P>
       The data controller is Signal Stack, an unincorporated UK business
-      contactable at <a className="brass-underline hover:text-oxblood" href="mailto:peter@signalstack.co.uk">peter@signalstack.co.uk</a>.
+      contactable at <Mail />.
     </P>
 
     <H2>2. What we collect</H2>
@@ -119,8 +117,7 @@ export const Privacy = () => (
     <P>
       Under UK GDPR you have the right to access, correct, port or delete the
       personal data we hold about you, and to object to its processing. Email{" "}
-      <a className="brass-underline hover:text-oxblood" href="mailto:peter@signalstack.co.uk">peter@signalstack.co.uk</a>{" "}
-      and we&apos;ll respond within 30 days.
+      <Mail /> and we&apos;ll respond within 30 days.
     </P>
 
     <H2>7. Cookies & analytics</H2>
@@ -227,8 +224,7 @@ export const Terms = () => (
 
     <H2>10. Contact</H2>
     <P>
-      Questions about these terms? Email{" "}
-      <a className="brass-underline hover:text-oxblood" href="mailto:peter@signalstack.co.uk">peter@signalstack.co.uk</a>.
+      Questions about these terms? Email <Mail />.
     </P>
   </PageShell>
 );
