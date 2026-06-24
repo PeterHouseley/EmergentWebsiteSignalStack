@@ -5,3 +5,9 @@ credentials.json
 *.pem
 *.key
 .credentials
+
+node_modules/
+build/
+dist/
+.cache/
+.DS_Store
