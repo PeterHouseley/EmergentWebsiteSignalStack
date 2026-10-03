@@ -182,8 +182,12 @@ const QualifyForm = () => {
 
               <div className="mt-8 pt-6 border-t border-line flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
                 <p className="font-mono uppercase tracking-widerx text-[11px] text-mute max-w-xs leading-relaxed">
-                  Submitting saves your details. If saving fails, an email
-                  draft to peter@signalstack.co.uk opens instead.
+                  Submitting saves your details under our{" "}
+                  <a className="u-link text-cyan-deep" href="/privacy">
+                    Privacy Policy
+                  </a>
+                  . If saving fails, an email draft to peter@signalstack.co.uk
+                  opens instead.
                 </p>
                 <button
                   type="submit"
