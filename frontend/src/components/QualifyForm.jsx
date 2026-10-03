@@ -51,11 +51,9 @@ const QualifyForm = () => {
 
     if (result.ok) {
       setStatus("sent");
-      // also open mailto so Peter still gets an inbox notification (belt + braces)
-      // small delay so the user sees the success state first
-      setTimeout(() => {
-        window.location.href = buildMailto();
-      }, 600);
+      // A successful database write is the primary intake route. Do not force
+      // an email-client handoff after it succeeds; that creates unnecessary
+      // buyer friction and implies a duplicate submission.
     } else {
       // DB write failed — fall back to mailto-only so the enquiry isn't lost
       setStatus("error");
@@ -85,8 +83,7 @@ const QualifyForm = () => {
             </h2>
             <p className="mt-6 text-mute text-base md:text-lg leading-relaxed max-w-md">
               We&apos;ll come back inside 24 hours with a yes, a no, or a
-              sharper version of the brief. Your details are logged securely
-              and an email draft to Peter opens with your answers pre-filled.
+              sharper version of the brief. Your details are logged securely.
             </p>
 
             <div className="mt-8 flex items-center gap-2.5 text-[13px] text-mute">
@@ -185,8 +182,8 @@ const QualifyForm = () => {
 
               <div className="mt-8 pt-6 border-t border-line flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
                 <p className="font-mono uppercase tracking-widerx text-[11px] text-mute max-w-xs leading-relaxed">
-                  Submitting saves your details and opens an email draft to
-                  peter@signalstack.co.uk
+                  Submitting saves your details. If saving fails, an email
+                  draft to peter@signalstack.co.uk opens instead.
                 </p>
                 <button
                   type="submit"
@@ -203,7 +200,7 @@ const QualifyForm = () => {
                   {status === "sent" && (
                     <>
                       <ClipboardCheck className="w-4 h-4" />
-                      <span>Received · opening email</span>
+                      <span>Received</span>
                     </>
                   )}
                   {(status === "idle" || status === "error") && (
